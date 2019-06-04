@@ -17,7 +17,7 @@
             @click="openPDF('http://www.rkcinst.co.jp/chinese/pdf/sa200_inst_c.pdf')"
           >
             <ImgClass height="184px" src="/static/img/pdf.png"/>
-            <div class="text">习近平出席 不忘初心牢…</div>
+            <div class="text">习近平出席 不忘初…</div>
           </div>
         </Col>
       </Row>
