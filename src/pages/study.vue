@@ -23,7 +23,7 @@
       </Row>
     </div>
     <Footer/>
-    <Modal v-model="pdfModel" width="1100px"  footer-hide  title="学习教育PDF">
+    <Modal v-model="pdfModel" width="1100px" footer-hide title="学习教育PDF">
       <div style="height:70vh" ref="PDF"></div>
     </Modal>
   </div>
@@ -55,8 +55,13 @@ export default {
     openPDF(src) {
       console.log(src);
       this.pdfModel = true;
+
+      var options = {
+        height: "400px",
+        pdfOpenParams: { scrollbars: "0", toolbar: "0", statusbar: "0" } //禁用工具栏代码
+      };
       this.$nextTick(() => {
-        pdfobject.embed(src, this.$refs.PDF);
+        pdfobject.embed(src, this.$refs.PDF, options);
       });
     }
   }
