@@ -5,13 +5,13 @@ import QS from 'qs';
 axios.defaults.timeout = 8000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 if (process.env.NODE_ENV == 'development') {
-    axios.defaults.baseURL = '/API';
+    // axios.defaults.baseURL = '/API';
 }
 else if (process.env.NODE_ENV == 'debug') {
-    axios.defaults.baseURL = '';
+    // axios.defaults.baseURL = '';
 }
 else if (process.env.NODE_ENV == 'production') {
-    axios.defaults.baseURL = '/api/party';
+    // axios.defaults.baseURL = '/api/party';
 }
 
 //请求拦截器

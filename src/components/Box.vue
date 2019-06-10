@@ -21,7 +21,7 @@ export default {
     url(item) {
       let routeUrl;
 
-    if (item.ColumnsId == 1) {
+      if (item.ColumnsId == 1) {
         routeUrl = this.$router.resolve({
           name: "policy_details",
           params: { id: item.ID }
@@ -62,8 +62,7 @@ export default {
       type: ""
     }
   },
-  created(){
-  }
+  created() {}
 };
 </script>
 
@@ -87,16 +86,17 @@ export default {
       }
     }
     .item {
-      font-size: 14px;
+      font-size: 16px;
       cursor: pointer;
       color: rgba(0, 0, 0, 1);
       line-height: 24px;
+      font-weight: bold;
       &:hover {
         color: red;
       }
-      &:nth-child(1) {
-        .main;
-      }
+      // &:nth-child(1) {
+      //   // .main;
+      // }
     }
   }
   .left_icon {

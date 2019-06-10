@@ -3,28 +3,45 @@
     <div class="study_top">
       <Title text="学习教育"></Title>
     </div>
+    <div class="study_top">
+      <div class="item_0" v-if="xujy_page.length==0">暂无数据</div>
+    </div>
+
     <div class="regime_content">
       <Row :gutter="32" type="flex">
-        <Col :key="item" v-for="item in 6" span="6">
-          <div class="item">
-            <mp4Box height="184px" src="https://gaopin-img.bj.bcebos.com/133204469315.jpg"/>
-            <div class="text">习近平出席 不忘初心牢…</div>
-          </div>
-        </Col>
-        <Col :key="item+10" v-for="item in 6" span="6">
-          <div
-            class="item"
-            @click="openPDF('http://www.rkcinst.co.jp/chinese/pdf/sa200_inst_c.pdf')"
-          >
+        <Col :key="item.ID" v-for="item in xujy_page" span="6">
+          <div v-if="item.Introduce=='pdf'" class="item" @click="openPDF(item)">
             <ImgClass height="184px" src="/static/img/pdf.png"/>
-            <div class="text">习近平出席 不忘初…</div>
+            <div class="text">{{item.Title}}</div>
+          </div>
+          <div v-else class="item" @click="goDetails(item.ID)">
+            <mp4Box height="184px" :src="item.ImgUrl"/>
+            <div class="text">{{item.Title}}</div>
           </div>
         </Col>
       </Row>
     </div>
+    <div class="page_num">
+      <Page
+        @on-change="pageChange"
+        :total="total"
+        :current="PageIndex"
+        show-elevator
+        :page-size="PageSize"
+        :show-total="true"
+      />
+    </div>
+    <BackTop :height="300" :bottom="200" :right="200">
+      <div ref="GO_top" class="top">
+        <Icon type="md-arrow-round-up" size="30"/>
+      </div>
+    </BackTop>
     <Footer/>
-    <Modal v-model="pdfModel" width="1100px" footer-hide title="学习教育PDF">
+    <Modal v-model="pdfModel" width="1100px" footer-hide :title="PDFtitle">
       <div style="height:70vh" ref="PDF"></div>
+    </Modal>
+    <Modal v-model="pdfModel_ie" width="1200px" footer-hide :title="PDFtitle">
+      <iframe width="100%" height="700px" :src="pdfModel_ie_url" frameborder="0"></iframe>
     </Modal>
   </div>
 </template>
@@ -36,10 +53,18 @@ import Footer from "@/components/Footer";
 import mp4Box from "@/components/mp4Box";
 import ImgClass from "@/components/imgClass";
 import pdfobject from "pdfobject";
+import { GetClassNewsList_Study } from "../Api/Api";
 export default {
   data() {
     return {
-      pdfModel: false
+      pdfModel: false,
+      pdfModel_ie: false,
+      pdfModel_ie_url: "",
+      xujy_page: [],
+      PageIndex: 1,
+      total: 0,
+      PageSize: 12,
+      PDFtitle: ""
     };
   },
   components: {
@@ -49,20 +74,78 @@ export default {
     ImgClass
   },
   created() {
-    console.log(pdfobject);
+    this.PageIndex = this.$route.query.page
+      ? Number(this.$route.query.page)
+      : 1;
+    this.GetClassNewsList_Study_function();
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.PageIndex = Number(to.query.page);
+    this.GetClassNewsList_Study_function();
+    next();
   },
   methods: {
-    openPDF(src) {
-      console.log(src);
-      this.pdfModel = true;
-
-      var options = {
-        height: "400px",
-        pdfOpenParams: { scrollbars: "0", toolbar: "0", statusbar: "0" } //禁用工具栏代码
-      };
-      this.$nextTick(() => {
-        pdfobject.embed(src, this.$refs.PDF, options);
+    //获取列表
+    GetClassNewsList_Study_function() {
+      GetClassNewsList_Study({
+        PageIndex: this.PageIndex,
+        PageSize: this.PageSize
+      }).then(res => {
+        if (res.data.Class_Study_News.length == 0) {
+          this.$router.push({ name: "study" });
+          if (this.PageIndex != 1) {
+            this.$Message.warning("未找到当前页码");
+          }
+        } else {
+          this.total = res.data.RowCount;
+          this.xujy_page = res.data.Class_Study_News;
+        }
       });
+    },
+
+    pageChange(page) {
+      this.$router.push({ name: "study", query: { page: page } });
+      this.$refs.GO_top.click();
+    },
+    //打开FDP
+    openPDF(item) {
+      this.pdfModel_ie_url = "";
+      if (!!window.ActiveXObject || "ActiveXObject" in window) {
+        this.pdfModel_ie = true;
+        this.$nextTick(() => {
+          this.pdfModel_ie_url =
+            "/PDFView/web/viewer.html?file=" + item.FilePath;
+        });
+
+        //  window.open("/PDFView/web/viewer.html?filepath=" + item.FilePath)
+      } else {
+        if (pdfobject.supportsPDFs) {
+          //检测浏览器是否支持pdfobject
+          this.pdfModel = true;
+          console.log(item.FileUrl);
+          this.PDFtitle = item.Title;
+          var options = {
+            pdfOpenParams: { scrollbars: "0", toolbar: "0", statusbar: "0" } //禁用工具栏代码
+          };
+          this.$nextTick(() => {
+            pdfobject.embed(item.FileUrl, this.$refs.PDF, options);
+          });
+        } else {
+          this.pdfModel_ie = true;
+          this.$nextTick(() => {
+            this.pdfModel_ie_url =
+              "/PDFView/web/viewer.html?file=" + item.FilePath;
+          });
+        }
+      }
+    },
+    //前往视频详情页
+    goDetails(item) {
+      let routeUrl = this.$router.resolve({
+        name: "study_details",
+        params: { id: item }
+      });
+      window.open(routeUrl.href, "_blank");
     }
   }
 };
@@ -91,5 +174,13 @@ export default {
       text-align: center;
     }
   }
+}
+.page_num {
+  .DJ_width;
+  height: 80px;
+  display: flex;
+  padding-top: 40px;
+  justify-content: center;
+  align-items: center;
 }
 </style>

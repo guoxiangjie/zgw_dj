@@ -22,6 +22,8 @@
             :value="item"
             :text="item.Summary"
             :main="item.IsRed"
+            :time="item.CreateTimeT"
+            timePosition="top"
             :isfoot="false"
             :isborder="index!=2"
           ></NewsTitle>

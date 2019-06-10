@@ -104,6 +104,9 @@ export default {
         case "study":
           this.active = 6;
           break;
+        case "study_details":
+          this.active = 6;
+          break;
       }
     }
   }

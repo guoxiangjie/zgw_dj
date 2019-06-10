@@ -211,7 +211,6 @@ export default {
   },
   created() {
     this.getNewsContent();
-    console.log(this.$route.name);
     this.href = window.location.href;
     switch (this.$route.name) {
       case "mien_details":

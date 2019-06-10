@@ -12,6 +12,7 @@ import Article from '@/pages/article'
 import Organization from '@/pages/organization'
 import Errorpage from '@/pages/error'
 import Study from '@/pages/Study'
+import Study_details from '@/pages/study_details'
 Vue.use(Router)
 
 export default new Router({
@@ -82,6 +83,11 @@ export default new Router({
       path:'/Study',
       name:'study',
       component:Study
+    },
+    {
+      path:'/Study_details/:id',
+      name:'study_details',
+      component:Study_details
     },
     {
       path:'*',
