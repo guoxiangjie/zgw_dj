@@ -1,6 +1,6 @@
 # dj
 
-> A Vue.js project
+> 中钢网党建项目
 
 ## Build Setup
 
