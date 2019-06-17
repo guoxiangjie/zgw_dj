@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="logo_box">
-      <img src="/static/img/logo@2x.png" alt srcset>
+      <img src="../static/img/logo@2x.png" alt srcset>
     </div>
     <div class="header">
       <Menu></Menu>
@@ -30,7 +30,7 @@ export default {
 @import './assets/common.less';
 #app {
   min-width: 1100px;
-  background: url("/static/img/bg@2x.png") no-repeat;
+  background: url("../static/img/bg@2x.png") no-repeat;
   background-size: 100%;
   .logo_box {
     height: 140px;

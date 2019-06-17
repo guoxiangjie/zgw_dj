@@ -50,7 +50,7 @@ export default {
     content: "";
     width: 100%;
     height: 100%;
-    background: url(/static/img/play.png) no-repeat center center
+    background: url('../../static/img/play.png') no-repeat center center
       rgba(0, 0, 0, 0.4);
     position: absolute;
     top: 0;

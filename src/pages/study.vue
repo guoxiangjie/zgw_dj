@@ -11,7 +11,7 @@
       <Row :gutter="32" type="flex">
         <Col :key="item.ID" v-for="item in xujy_page" span="6">
           <div v-if="item.Introduce=='pdf'" class="item" @click="openPDF(item)">
-            <ImgClass height="184px" src="/static/img/pdf.png"/>
+            <ImgClass height="184px" src="../../static/img/pdf.png"/>
             <div class="text">{{item.Title}}</div>
           </div>
           <div v-else class="item" @click="goDetails(item.ID)">

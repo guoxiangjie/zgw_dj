@@ -68,7 +68,7 @@ export default {
 .box {
   width: 100%;
   height: 465px;
-  background: url("/static/img/pic-diwen@2x.png") no-repeat;
+  background: url("../../static/img/pic-diwen@2x.png") no-repeat;
   background-size: 100% 100%;
   .content {
     width: 1100px;

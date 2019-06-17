@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="organization_content">
-      <img src="/static/img/zuzhijiagou.png" alt srcset>
+      <img src="../../static/img/zuzhijiagou.png" alt srcset>
     </div>
     <div class="footer">
       <Footer></Footer>

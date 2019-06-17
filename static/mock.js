@@ -451,12 +451,12 @@ export const more = [
 
 export const MaxSwiperImgs = [
   {
-    ImgUrl:'/static/img/banner1.png'
+    ImgUrl:'../static/img/banner1.png'
   },
   {
-    ImgUrl:'/static/img/banner2.png'
+    ImgUrl:'../static/img/banner2.png'
   },
   {
-    ImgUrl:'/static/img/banner3.png'
+    ImgUrl:'../static/img/banner3.png'
   }
 ]

@@ -71,7 +71,7 @@
     </div>
 
     <div class="content3">
-      <img src="/static/img/pic-jinju.png" alt srcset>
+      <img src="../../static/img/pic-jinju.png" alt srcset>
     </div>
 
     <div class="content5">
