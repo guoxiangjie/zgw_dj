@@ -20,8 +20,8 @@ module.exports = {
         }
       },
       '/api/party': {
-        // target: 'http://sxydj.zgw.com/djwebapi/api/party',  //目标接口域名
-        target: 'http://sxydj.zgw.com/api/party',  //目标接口域名
+        target: 'http://sxy.zgw.com/api/party',  //目标接口域名
+        // target: 'http://sxydj.zgw.com/api/party',  //目标接口域名
         changeOrigin: true,  //是否跨域
         pathRewrite: {
           '/api/party': ''

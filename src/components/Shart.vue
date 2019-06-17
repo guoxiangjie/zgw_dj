@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="shart_box">
+    <div class="shart_box" :style="{color:color}">
       分享到：
       <div class="icon icon1" @click="btn(2)"></div>
       <div class="icon icon2" @click="btn(1)"></div>
@@ -12,10 +12,13 @@
 
 <script>
 export default {
-  methods:{
-    btn(i){
-      this.$emit("shart",i)
+  methods: {
+    btn(i) {
+      this.$emit("shart", i);
     }
+  },
+  props: {
+    color: String
   }
 };
 </script>

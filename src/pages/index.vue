@@ -3,69 +3,59 @@
     <div class="header">
       <MaxSwiper v-if="siwperList!=null" :imgs="siwperList"></MaxSwiper>
     </div>
+
     <div class="Login">
       <login></login>
     </div>
-    <div class="content4">
-      <Title text="党建风采" href="http://sxy.zgw.com/DangJian/index.html#/Mien"></Title>
-      <div class="content4_box">
-        <div class="left">
-          <Imgswiper :list="djfc_left" :autoplay="true" width="500px" height="320px"></Imgswiper>
-        </div>
-        <div class="right" style="min-width:500px;padding-left:55px;">
-          <NewsTitle
-            v-for="(item,index) in djfc_right"
-            :key="index"
-            width="537px"
-            height="100px"
-            :title="item.Title"
-            :value="item"
-            :text="item.Summary"
-            :main="item.IsRed"
-            :time="item.CreateTimeT"
-            timePosition="top"
-            :isfoot="false"
-            :isborder="index!=2"
-          ></NewsTitle>
-          <div class="item_0" v-if="djfc_right.length==0">暂无数据</div>
+
+    <div class="content-w">
+      <div class="content4">
+        <Title text="党建风采" href="http://sxy.zgw.com/DangJian/index.html#/Mien"></Title>
+        <div class="content4_box">
+          <div class="left">
+            <Imgswiper :list="djfc_left" :autoplay="true" width="530px" height="320px"></Imgswiper>
+          </div>
+          <div class="right" style="min-width:500px;padding:20px 0;">
+            <NewsTitle
+              v-for="(item,index) in djfc_right"
+              :key="index"
+              width="530px"
+              height="100px"
+              :title="item.Title"
+              :value="item"
+              :text="item.Summary"
+              :main="item.IsRed"
+              :time="item.CreateTimeT"
+              timePosition="top"
+              :isfoot="false"
+              :isborder="index!=2"
+            ></NewsTitle>
+            <div class="item_0" v-if="djfc_right.length==0">暂无数据</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="content2">
-      <Title text="政策宣贯" href="http://sxy.zgw.com/DangJian/index.html#/policy"></Title>
-      <div class="content2_box">
-        <div class="left">
-          <Imgswiper :list="zcxg_left" :autoplay="true" width="500px" height="320px"></Imgswiper>
-        </div>
-        <div class="right">
-          <Box
-            v-for="(item,index) in zcxg_right"
-            :key="index"
-            :value="item"
-            width="564px"
-            height="151px"
-          ></Box>
-        </div>
-      </div>
-    </div>
-
-    <div class="content2">
-      <Title text="制度建设" href="http://sxy.zgw.com/DangJian/index.html#/Regim"></Title>
-      <div class="content2_box">
-        <div class="left">
-          <Imgswiper :list="zdjs_right" :autoplay="true" width="500px" height="320px"></Imgswiper>
-        </div>
-        <div class="right">
-          <MinListItem
-            height="48px"
-            v-for="(item,index) in zdjs_left"
-            :value="item"
-            :key="index"
-            :text="item.Summary"
-            :time="item.time"
-          ></MinListItem>
-          <div class="item_0" v-if="zdjs_left.length==0">暂无数据</div>
+      <div class="content5">
+        <Title :width="180" text="榜样的力量" href="http://sxy.zgw.com/DangJian/index.html#/Example"></Title>
+        <div class="content4_box">
+          <div class="left">
+            <Imgswiper :list="bydll_left" :autoplay="true" width="530px" height="320px"></Imgswiper>
+          </div>
+          <div class="right" style="min-width:530px;padding:20px 0;">
+            <NewsTitle
+              v-for="(item,index) in bydll_right"
+              :key="index"
+              width="530px"
+              height="100px"
+              :title="item.Title"
+              :value="item"
+              :text="item.Summary"
+              :main="item.IsRed"
+              :isfoot="false"
+              :isborder="index!=2"
+            ></NewsTitle>
+            <div class="item_0" v-if="bydll_right.length==0">暂无数据</div>
+          </div>
         </div>
       </div>
     </div>
@@ -74,29 +64,52 @@
       <img src="../../static/img/pic-jinju.png" alt srcset>
     </div>
 
-    <div class="content5">
-      <Title :width="180" text="榜样的力量" href="http://sxy.zgw.com/DangJian/index.html#/Example"></Title>
-      <div class="content4_box">
-        <div class="left">
-          <Imgswiper :list="bydll_left" :autoplay="true" width="500px" height="320px"></Imgswiper>
+    <div class="content-w">
+      <div class="content2">
+        <Title text="政策宣贯" href="http://sxy.zgw.com/DangJian/index.html#/policy"></Title>
+        <div class="content2_box">
+          <div class="left">
+            <Imgswiper :list="zcxg_left" :autoplay="true" width="530px" height="320px"></Imgswiper>
+          </div>
+          <div class="right" style="padding:20px 0;">
+            <Box
+              v-for="(item,index) in zcxg_right"
+              :key="index"
+              :value="item"
+              width="530px"
+              height="151px"
+            ></Box>
+          </div>
         </div>
-        <div class="right" style="min-width:500px">
-          <NewsTitle
-            v-for="(item,index) in bydll_right"
-            :key="index"
-            width="567px"
-            height="100px"
-            :title="item.Title"
-            :value="item"
-            :text="item.Summary"
-            :main="item.IsRed"
-            :isfoot="false"
-            :isborder="index!=2"
-          ></NewsTitle>
-          <div class="item_0" v-if="bydll_right.length==0">暂无数据</div>
+      </div>
+
+      <div class="content2">
+        <Title text="制度建设" href="http://sxy.zgw.com/DangJian/index.html#/Regim"></Title>
+        <div class="content2_box">
+          <div class="left">
+            <Imgswiper :list="zdjs_right" :autoplay="true" width="530px" height="320px"></Imgswiper>
+          </div>
+          <div class="right" style="padding:20px 0;">
+            <MinListItem
+              height="48px"
+              v-for="(item,index) in zdjs_left"
+              :value="item"
+              :key="index"
+              :text="item.Summary"
+              :time="item.time"
+              type="full"
+              :sub="true"
+            ></MinListItem>
+            <div class="item_0" v-if="zdjs_left.length==0">暂无数据</div>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="content3">
+      <StudyContent href="http://sxy.zgw.com/DangJian/index.html#/Study" :isIndex="true"/>
+    </div>
+
     <div class="footer">
       <Footer></Footer>
     </div>
@@ -124,7 +137,7 @@ import Login from "@/components/Login";
 import Box from "@/components/Box";
 import Imgswiper from "@/components/Imgswiper";
 import NewsTitle from "@/components/NewsTitle";
-
+import StudyContent from "@/components/StudyContent";
 export default {
   data() {
     return {
@@ -145,7 +158,7 @@ export default {
         res.data.IndexSlide.IndexSlide == null
           ? MaxSwiperImgs
           : res.data.IndexSlide.IndexSlide;
-          console.log(this.siwperList)
+      console.log(this.siwperList);
       let slide1 = res.data.IndexClassNews.IndexClassNews[0];
       let slide2 = res.data.IndexClassNews.IndexClassNews[1];
       let slide3 = res.data.IndexClassNews.IndexClassNews[2];
@@ -186,23 +199,29 @@ export default {
     Login,
     Box,
     Imgswiper,
-    NewsTitle
+    NewsTitle,
+    StudyContent
   }
 };
 </script>
 
 <style lang="less" scoped>
 @import "../assets/common.less";
-.content1 {
+.content-w {
   .header;
-  .content_mtop;
+  display: flex;
+  justify-content: space-between;
+}
+.content1 {
+  .min-header;
+
   display: flex;
   justify-content: space-between;
   .left {
-    width: 684px;
+    width: 530px;
   }
   .right {
-    width: 380px;
+    width: 530px;
   }
   .ts {
     display: flex;
@@ -211,11 +230,12 @@ export default {
   }
 }
 .content2 {
-  .header;
-  .content_mtop;
+  .min-header;
+
   .content2_box {
     padding-top: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     .right {
       display: flex;
@@ -232,13 +252,12 @@ export default {
   }
 }
 .content4 {
-  .header;
+  .min-header;
   .content4_box {
     .content2>.content2_box;
   }
 }
 .content5 {
   .content4;
-  .content_mtop;
 }
 </style>

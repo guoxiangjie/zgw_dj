@@ -44,7 +44,7 @@ export default {
           url: "/organization"
         },
         {
-          name: "学习教育",
+          name: "习语金句",
           url: "/Study"
         }
       ]

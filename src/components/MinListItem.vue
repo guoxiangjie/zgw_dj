@@ -4,7 +4,7 @@
       <img v-if="icon=='danghui'" src="../assets/img/icon-danghui@2x.png" alt srcset>
       <img v-if="icon=='zhidu'" src="../assets/img/icon-zhidu@2x.png" alt srcset>
     </div>
-    <div class="content">{{value.Title}}</div>
+    <div class="content">{{subTitle(value.Title)}}</div>
     <div class="time" :class="{'time_right':type=='full'}">[{{value.CreateTimeT}}]</div>
   </div>
 </template>
@@ -15,6 +15,10 @@ export default {
     text: {
       type: String,
       default: ""
+    },
+    sub: {
+      type: Boolean,
+      default: false
     },
     icon: {
       type: String,
@@ -35,6 +39,13 @@ export default {
     }
   },
   methods: {
+    subTitle(title) {
+      if (this.sub) {
+        return title.length > 16 ? title.substring(0, 16) + "..." : title;
+      } else {
+        return title;
+      }
+    },
     //3未制度建设
     url(item) {
       let routeUrl;

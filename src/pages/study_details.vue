@@ -15,7 +15,7 @@
             controls="controls"
           >您的浏览器不支持网页播放，请升级您的浏览器</video>
         </div>
-        <Shart @shart="maxShart"/>
+        <Shart color="#fff" @shart="maxShart"/>
         <button ref="copy_hidden" class="copy-hidden" hidden :data-clipboard-text="href">Copy</button>
         <Modal
           v-model="qe_code"

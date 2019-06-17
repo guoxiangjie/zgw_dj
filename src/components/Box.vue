@@ -89,7 +89,7 @@ export default {
       font-size: 16px;
       cursor: pointer;
       color: rgba(0, 0, 0, 1);
-      line-height: 24px;
+      line-height: 30px;
       font-weight: bold;
       &:hover {
         color: red;
